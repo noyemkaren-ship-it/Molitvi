@@ -1,0 +1,21 @@
+from fastapi import FastAPI, Request
+from starlette.templating import Jinja2Templates
+from hristos import mol
+
+app = FastAPI()
+templates = Jinja2Templates(directory="templates")
+
+@app.get("/")
+async def root(request: Request):
+    return templates.TemplateResponse(
+        "index.html",
+        {
+            "request": request
+        })
+
+@app.get("/smol")
+async def smol(request: Request):
+    return templates.TemplateResponse("smol.html", {
+        "request": request,
+        "mol": mol
+    })

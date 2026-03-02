@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Короткие молитвы</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f5f0e8 0%, #faf7f2 100%);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            color: #2c3e50;
+            line-height: 1.6;
+            padding: 2rem 1rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            color: #4a3f38;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 3px solid #d4b59e;
+            font-weight: 400;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 0 rgba(255,255,255,0.8);
+        }
+
+        h1::before {
+            content: "☦️ ";
+            font-size: 2.5rem;
+        }
+
+        .prayer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .prayer-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05), 0 5px 10px rgba(0,0,0,0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid #f0e4d8;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .prayer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(110, 80, 60, 0.1);
+            border-color: #d4b59e;
+        }
+
+        .prayer-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+            border-bottom: 2px dotted #eedacb;
+            padding-bottom: 0.8rem;
+        }
+
+        .prayer-emoji {
+            font-size: 2rem;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.1));
+            background: #f9f1ea;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .prayer-title {
+            font-size: 1.3rem;
+            color: #5d4b3a;
+            font-weight: 500;
+            flex: 1;
+        }
+
+        .prayer-variants {
+            list-style: none;
+        }
+
+        .prayer-variant {
+            background: #fdf9f5;
+            padding: 0.8rem 1rem;
+            margin-bottom: 0.7rem;
+            border-radius: 30px 15px 15px 30px;
+            border-left: 5px solid #d4b59e;
+            font-style: italic;
+            color: #3d3d3d;
+            font-size: 1.05rem;
+            word-break: break-word;
+        }
+
+        .prayer-variant::before {
+            content: "«";
+            opacity: 0.6;
+            margin-right: 2px;
+        }
+
+        .prayer-variant::after {
+            content: "»";
+            opacity: 0.6;
+            margin-left: 2px;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2rem;
+            }
+            .prayer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Короткие молитвы</h1>
+
+        <ul class="prayer-grid">
+            {% for molitva in mol %}
+            <li class="prayer-card">
+                <div class="prayer-header">
+                    <span class="prayer-emoji">{{ molitva.emoji or '☦️' }}</span>
+                    <span class="prayer-title">{{ molitva.title or 'Молитва' }}</span>
+                </div>
+
+                <div class="prayer-content">
+                    {% if molitva.text %}
+                        <div class="prayer-variant">{{ molitva.text }}</div>
+                    {% endif %}
+
+                    {% if molitva.variants %}
+                        <ul class="prayer-variants">
+                            {% for variant in molitva.variants %}
+                            <li class="prayer-variant">{{ variant }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+
+                    {% if molitva.short %}
+                        <div class="prayer-variant">{{ molitva.short }}</div>
+                    {% endif %}
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
