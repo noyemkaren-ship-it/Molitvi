@@ -10,7 +10,8 @@ async def root(request: Request):
     return templates.TemplateResponse(
         "index.html",
         {
-            "request": request
+            "request": request,
+            "k": "☦"
         })
 
 @app.get("/smol")
@@ -24,5 +25,6 @@ async def smol(request: Request):
 async def church(request: Request):
     return templates.TemplateResponse("church.html", {
         "request": request,
-        "molitva": molitvi
+        "molitva": molitvi,
+        "k": "☦"
     })
