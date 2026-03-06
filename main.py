@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request
 from starlette.templating import Jinja2Templates
 from hristos import mol, molitvi
+from iisus import info
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
@@ -27,4 +28,12 @@ async def church(request: Request):
         "request": request,
         "molitva": molitvi,
         "k": "☦"
+    })
+
+@app.get("/iisus")
+async def church(request: Request):
+    return templates.TemplateResponse("iisus.html", {
+        "request": request,
+        "k": "☦",
+        "info": info
     })
