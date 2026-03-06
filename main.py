@@ -129,7 +129,7 @@ async def earth_history8(request: Request):
 @app.get("/isto")
 async def root(request: Request):
     return templates.TemplateResponse(
-        "insto.html",
+        "isto.html",
         {
             "request": request,
             "k": "☦"
