@@ -125,3 +125,12 @@ async def earth_history8(request: Request):
         "part": 8,
         "total": 8
     })
+
+@app.get("/insto")
+async def root(request: Request):
+    return templates.TemplateResponse(
+        "insto.html",
+        {
+            "request": request,
+            "k": "☦"
+        })
