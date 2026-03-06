@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }} | История мира</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #2b1e0f 0%, #3d2e1c 100%);
+            color: #f0e6d2;
+            line-height: 1.6;
+            padding: 30px 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Навигация по страницам */
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            background: rgba(139, 69, 19, 0.5);
+            color: #ffd700;
+            text-decoration: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            border: 1px solid #d4af37;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            background: #8b4513;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .nav-link.active {
+            background: #d4af37;
+            color: #2b1e0f;
+            font-weight: bold;
+            pointer-events: none;
+        }
+
+        /* Заголовок страницы */
+        .page-title {
+            text-align: center;
+            font-size: 1.2em;
+            color: #d4af37;
+            margin-bottom: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.8em;
+            color: #ffd700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 20px;
+            font-family: 'Palatino', serif;
+        }
+
+        /* Декоративный элемент */
+        .decor {
+            text-align: center;
+            font-size: 24px;
+            color: #d4af37;
+            margin: 20px 0;
+            opacity: 0.7;
+        }
+
+        /* Основной контент */
+        .story-content {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 30px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #d4af37;
+            font-size: 1.2em;
+            white-space: pre-wrap;
+            line-height: 1.8;
+        }
+
+        /* Список всех историй */
+        .history-list {
+            margin-top: 40px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+        }
+
+        .history-list h3 {
+            color: #d4af37;
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .history-items {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .history-item {
+            background: rgba(139, 69, 19, 0.3);
+            color: #f0e6d2;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 40px;
+            border: 1px solid #b8860b;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+        }
+
+        .history-item:hover {
+            background: #b8860b;
+            color: #2b1e0f;
+            transform: scale(1.05);
+        }
+
+        /* Кнопка назад */
+        .back-button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 12px 30px;
+            background: transparent;
+            border: 2px solid #d4af37;
+            color: #d4af37;
+            text-decoration: none;
+            border-radius: 40px;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: #d4af37;
+            color: #2b1e0f;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #b8860b;
+            font-style: italic;
+            border-top: 1px solid #d4af37;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+            h1 {
+                font-size: 2em;
+            }
+            .story-content {
+                padding: 20px;
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Навигация по трём страницам -->
+        <div class="nav-links">
+            <a href="/earth_create1" class="nav-link {% if title == '1 история' %}active{% endif %}">🌍 1. Сотворение земли</a>
+            <a href="/earth_create2" class="nav-link {% if title == '2 история' %}active{% endif %}">👥 2. Сотворение людей</a>
+            <a href="/earth_create3" class="nav-link {% if title == '3 история' %}active{% endif %}">📜 3. Миссия</a>
+        </div>
+
+        <!-- Заголовок страницы -->
+        <div class="page-title">{{ title }}</div>
+        <h1>{{ zagalovor }}</h1>
+
+        <div class="decor">✧ ✦ ✧</div>
+
+        <!-- Основное содержание -->
+        <div class="story-content">
+            {{ info1 }}
+        </div>
+
+        <div class="decor">✧ ✦ ✧</div>
+
+        <!-- Список всех историй (как вы просили) -->
+        <div class="history-list">
+            <h3>📖 Все истории мира</h3>
+            <div class="history-items">
+                <a href="/earth_create1" class="history-item">🌍 Сотворение земли</a>
+                <a href="/earth_create2" class="history-item">👥 Сотворение людей</a>
+                <a href="/earth_create3" class="history-item">📜 Миссия</a>
+            </div>
+        </div>
+
+        <!-- Кнопка назад (если нужно) -->
+        <div style="text-align: center;">
+            <a href="/" class="back-button">← На главную</a>
+        </div>
+
+        <footer>
+            <p>«В начале сотворил Бог небо и землю» (Быт. 1:1)</p>
+            <p style="margin-top: 10px;">© История творения</p>
+        </footer>
+    </div>
+</body>
+</html>

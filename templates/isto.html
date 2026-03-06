@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Три истории мира</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(135deg, #1a2a1a 0%, #2c3e2c 100%);
+            color: #f0e6d2;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 2px solid #d4af37;
+            border-radius: 40px;
+            padding: 50px 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #ffd700;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            border-bottom: 2px solid #d4af37;
+            padding-bottom: 20px;
+            font-family: 'Palatino', serif;
+            letter-spacing: 2px;
+        }
+
+        .decor {
+            font-size: 24px;
+            color: #d4af37;
+            margin: 20px 0 30px;
+            opacity: 0.8;
+        }
+
+        .history-links {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .history-link {
+            display: block;
+            text-decoration: none;
+            background: rgba(139, 69, 19, 0.3);
+            border: 2px solid #b8860b;
+            border-radius: 60px;
+            padding: 20px 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .history-link:hover {
+            background: #8b4513;
+            border-color: #ffd700;
+            transform: scale(1.02);
+            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.2);
+        }
+
+        .history-link h2 {
+            color: #f0e6d2;
+            font-size: 1.8em;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .history-link span {
+            color: #ffd700;
+            font-size: 0.8em;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 5px 15px;
+            border-radius: 30px;
+            border: 1px solid #d4af37;
+        }
+
+        .history-link .part {
+            font-size: 0.7em;
+            color: #b8860b;
+            margin-left: 10px;
+        }
+
+        .history-link:hover h2 {
+            color: #ffffff;
+        }
+
+        .history-link:hover span {
+            background: #d4af37;
+            color: #1a2a1a;
+        }
+
+        /* Иконки для каждой истории */
+        .link-1::before {
+            content: "🌍";
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        .link-2::before {
+            content: "👥";
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        .link-3::before {
+            content: "📜";
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+
+        footer {
+            margin-top: 40px;
+            color: #b8860b;
+            font-style: italic;
+            border-top: 1px solid #d4af37;
+            padding-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 30px 20px;
+            }
+
+            h1 {
+                font-size: 2.2em;
+            }
+
+            .history-link h2 {
+                font-size: 1.4em;
+                flex-direction: column;
+                gap: 8px;
+            }
+
+            .history-link span {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📖 Три истории мира</h1>
+
+        <div class="decor">✧ ✦ ✧</div>
+
+        <div class="history-links">
+            <!-- Первая история -->
+            <a href="earth_create1" class="history-link link-1">
+                <h2>
+                    {{ k }} Истории мира 1 часть! {{ k }}
+                    <span>Сотворение земли</span>
+                </h2>
+            </a>
+
+            <!-- Вторая история -->
+            <a href="earth_create2" class="history-link link-2">
+                <h2>
+                    {{ k }} Истории мира 2 часть! {{ k }}
+                    <span>Сотворение людей</span>
+                </h2>
+            </a>
+
+            <!-- Третья история -->
+            <a href="earth_create3" class="history-link link-3">
+                <h2>
+                    {{ k }} Истории мира 3 часть! {{ k }}
+                    <span>Миссия</span>
+                </h2>
+            </a>
+        </div>
+
+        <div class="decor">✧ ✦ ✧</div>
+
+        <footer>
+            <p>«В начале сотворил Бог небо и землю» (Быт. 1:1)</p>
+        </footer>
+    </div>
+</body>
+</html>
