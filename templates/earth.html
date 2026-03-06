@@ -35,7 +35,7 @@
         .nav-links {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             margin-bottom: 30px;
             flex-wrap: wrap;
         }
@@ -44,11 +44,13 @@
             background: rgba(139, 69, 19, 0.5);
             color: #ffd700;
             text-decoration: none;
-            padding: 10px 25px;
+            padding: 8px 15px;
             border-radius: 30px;
             border: 1px solid #d4af37;
-            font-size: 1.1em;
+            font-size: 0.9em;
             transition: all 0.3s ease;
+            min-width: 45px;
+            text-align: center;
         }
 
         .nav-link:hover {
@@ -61,7 +63,7 @@
             background: #d4af37;
             color: #2b1e0f;
             font-weight: bold;
-            pointer-events: none;
+            border-color: #ffd700;
         }
 
         /* Заголовок страницы */
@@ -76,7 +78,7 @@
 
         h1 {
             text-align: center;
-            font-size: 2.8em;
+            font-size: 2.5em;
             color: #ffd700;
             margin-bottom: 20px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
@@ -101,14 +103,41 @@
             border-radius: 20px;
             margin: 20px 0;
             border-left: 4px solid #d4af37;
-            font-size: 1.2em;
+            font-size: 1.1em;
             white-space: pre-wrap;
             line-height: 1.8;
+            max-height: 500px;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: #d4af37 #2b1e0f;
+        }
+
+        .story-content::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        .story-content::-webkit-scrollbar-track {
+            background: #2b1e0f;
+            border-radius: 10px;
+        }
+
+        .story-content::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 10px;
+        }
+
+        /* Счётчик частей */
+        .part-counter {
+            text-align: center;
+            color: #b8860b;
+            font-size: 1.1em;
+            margin: 15px 0;
+            font-style: italic;
         }
 
         /* Список всех историй */
         .history-list {
-            margin-top: 40px;
+            margin-top: 30px;
             padding: 20px;
             background: rgba(0, 0, 0, 0.2);
             border-radius: 15px;
@@ -116,33 +145,63 @@
 
         .history-list h3 {
             color: #d4af37;
-            font-size: 1.5em;
+            font-size: 1.4em;
             margin-bottom: 20px;
             text-align: center;
         }
 
         .history-items {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 10px;
         }
 
         .history-item {
             background: rgba(139, 69, 19, 0.3);
             color: #f0e6d2;
             text-decoration: none;
-            padding: 12px 25px;
+            padding: 12px 10px;
             border-radius: 40px;
             border: 1px solid #b8860b;
             transition: all 0.3s ease;
-            font-size: 1.1em;
+            font-size: 0.95em;
+            text-align: center;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .history-item:hover {
             background: #b8860b;
             color: #2b1e0f;
-            transform: scale(1.05);
+            transform: scale(1.02);
+        }
+
+        /* Кнопки навигации между частями */
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+        }
+
+        .nav-button {
+            background: rgba(139, 69, 19, 0.5);
+            color: #ffd700;
+            text-decoration: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            border: 1px solid #d4af37;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover:not(.disabled) {
+            background: #8b4513;
+            transform: translateY(-2px);
+        }
+
+        .nav-button.disabled {
+            opacity: 0.3;
+            pointer-events: none;
         }
 
         /* Кнопка назад */
@@ -178,26 +237,34 @@
                 padding: 20px;
             }
             h1 {
-                font-size: 2em;
+                font-size: 1.8em;
             }
             .story-content {
                 padding: 20px;
                 font-size: 1em;
+            }
+            .history-items {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Навигация по трём страницам -->
+        <!-- Навигация по 8 страницам -->
         <div class="nav-links">
-            <a href="/earth_create1" class="nav-link {% if title == '1 история' %}active{% endif %}">🌍 1. Сотворение земли</a>
-            <a href="/earth_create2" class="nav-link {% if title == '2 история' %}active{% endif %}">👥 2. Сотворение людей</a>
-            <a href="/earth_create3" class="nav-link {% if title == '3 история' %}active{% endif %}">📜 3. Миссия</a>
+            <a href="/earth_create1" class="nav-link {% if part == 1 %}active{% endif %}">1</a>
+            <a href="/earth_create2" class="nav-link {% if part == 2 %}active{% endif %}">2</a>
+            <a href="/earth_create3" class="nav-link {% if part == 3 %}active{% endif %}">3</a>
+            <a href="/earth_create4" class="nav-link {% if part == 4 %}active{% endif %}">4</a>
+            <a href="/earth_create5" class="nav-link {% if part == 5 %}active{% endif %}">5</a>
+            <a href="/earth_create6" class="nav-link {% if part == 6 %}active{% endif %}">6</a>
+            <a href="/earth_create7" class="nav-link {% if part == 7 %}active{% endif %}">7</a>
+            <a href="/earth_create8" class="nav-link {% if part == 8 %}active{% endif %}">8</a>
         </div>
 
         <!-- Заголовок страницы -->
-        <div class="page-title">{{ title }}</div>
+        <div class="page-title">{{ title }} (часть {{ part }} из {{ total }})</div>
         <h1>{{ zagalovor }}</h1>
 
         <div class="decor">✧ ✦ ✧</div>
@@ -207,26 +274,48 @@
             {{ info1 }}
         </div>
 
+        <div class="part-counter">Часть {{ part }} из {{ total }}</div>
+
+        <!-- Кнопки навигации между частями -->
+        <div class="navigation-buttons">
+            {% if part > 1 %}
+                <a href="/earth_create{{ part-1 }}" class="nav-button">← Предыдущая (часть {{ part-1 }})</a>
+            {% else %}
+                <span class="nav-button disabled">← Предыдущая</span>
+            {% endif %}
+
+            {% if part < total %}
+                <a href="/earth_create{{ part+1 }}" class="nav-button">Следующая (часть {{ part+1 }}) →</a>
+            {% else %}
+                <span class="nav-button disabled">Следующая →</span>
+            {% endif %}
+        </div>
+
         <div class="decor">✧ ✦ ✧</div>
 
-        <!-- Список всех историй (как вы просили) -->
+        <!-- Список всех историй (8 частей) -->
         <div class="history-list">
-            <h3>📖 Все истории мира</h3>
+            <h3>📖 Все части истории мира</h3>
             <div class="history-items">
-                <a href="/earth_create1" class="history-item">🌍 Сотворение земли</a>
-                <a href="/earth_create2" class="history-item">👥 Сотворение людей</a>
-                <a href="/earth_create3" class="history-item">📜 Миссия</a>
+                <a href="/earth_create1" class="history-item">1. Сотворение земли</a>
+                <a href="/earth_create2" class="history-item">2. Сотворение людей</a>
+                <a href="/earth_create3" class="history-item">3. Грехопадение</a>
+                <a href="/earth_create4" class="history-item">4. Каин и Авель</a>
+                <a href="/earth_create5" class="history-item">5. От Адама до Ноя</a>
+                <a href="/earth_create6" class="history-item">6. Ной и потоп</a>
+                <a href="/earth_create7" class="history-item">7. Вавилонская башня</a>
+                <a href="/earth_create8" class="history-item">8. Авраам и обетование</a>
             </div>
         </div>
 
-        <!-- Кнопка назад (если нужно) -->
+        <!-- Кнопка назад на главную -->
         <div style="text-align: center;">
             <a href="/" class="back-button">← На главную</a>
         </div>
 
         <footer>
             <p>«В начале сотворил Бог небо и землю» (Быт. 1:1)</p>
-            <p style="margin-top: 10px;">© История творения</p>
+            <p style="margin-top: 10px;">© История творения. Часть {{ part }} из {{ total }}</p>
         </footer>
     </div>
 </body>

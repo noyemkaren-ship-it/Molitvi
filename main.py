@@ -39,37 +39,89 @@ async def church(request: Request):
     })
 
 @app.get("/earth_create1")
-async def earht_history(Request: Request):
+async def earth_history1(request: Request):
     return templates.TemplateResponse("earth.html", {
-        "request": Request,
+        "request": request,
         "title": "1 история",
-        "zagalovor": "Создания земли",
-        "info1": info1[0]})
-
+        "zagalovor": "Сотворение земли",
+        "info1": info1[0],
+        "part": 1,
+        "total": 8
+    })
 
 @app.get("/earth_create2")
-async def earht_history2(Request: Request):
+async def earth_history2(request: Request):
     return templates.TemplateResponse("earth.html", {
-        "request": Request,
+        "request": request,
         "title": "2 история",
-        "zagalovor": "Создания людей",
-        "info1": info1[1]})
-
+        "zagalovor": "Сотворение людей",
+        "info1": info1[1],
+        "part": 2,
+        "total": 8
+    })
 
 @app.get("/earth_create3")
-async def earht_history(Request: Request):
+async def earth_history3(request: Request):
     return templates.TemplateResponse("earth.html", {
-        "request": Request,
+        "request": request,
         "title": "3 история",
-        "zagalovor": "Миссей",
-        "info1": info1[2]})
+        "zagalovor": "Грехопадение",
+        "info1": info1[2],
+        "part": 3,
+        "total": 8
+    })
 
+@app.get("/earth_create4")
+async def earth_history4(request: Request):
+    return templates.TemplateResponse("earth.html", {
+        "request": request,
+        "title": "4 история",
+        "zagalovor": "Каин и Авель",
+        "info1": info1[3],
+        "part": 4,
+        "total": 8
+    })
 
-@app.get("/isto")
-async def root(request: Request):
-    return templates.TemplateResponse(
-        "isto.html",
-        {
-            "request": request,
-            "k": "☦"
-        })
+@app.get("/earth_create5")
+async def earth_history5(request: Request):
+    return templates.TemplateResponse("earth.html", {
+        "request": request,
+        "title": "5 история",
+        "zagalovor": "От Адама до Ноя",
+        "info1": info1[4],
+        "part": 5,
+        "total": 8
+    })
+
+@app.get("/earth_create6")
+async def earth_history6(request: Request):
+    return templates.TemplateResponse("earth.html", {
+        "request": request,
+        "title": "6 история",
+        "zagalovor": "Ной и потоп",
+        "info1": info1[5],
+        "part": 6,
+        "total": 8
+    })
+
+@app.get("/earth_create7")
+async def earth_history7(request: Request):
+    return templates.TemplateResponse("earth.html", {
+        "request": request,
+        "title": "7 история",
+        "zagalovor": "Вавилонская башня",
+        "info1": info1[6],
+        "part": 7,
+        "total": 8
+    })
+
+@app.get("/earth_create8")
+async def earth_history8(request: Request):
+    return templates.TemplateResponse("earth.html", {
+        "request": request,
+        "title": "8 история",
+        "zagalovor": "Авраам и обетование",
+        "info1": info1[7],
+        "part": 8,
+        "total": 8
+    })

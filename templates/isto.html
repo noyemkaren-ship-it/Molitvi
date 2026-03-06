@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Три истории мира</title>
+    <title>История мира</title>
     <style>
         * {
             margin: 0;
@@ -53,9 +53,9 @@
         }
 
         .history-links {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
             margin: 30px 0;
         }
 
@@ -65,10 +65,8 @@
             background: rgba(139, 69, 19, 0.3);
             border: 2px solid #b8860b;
             border-radius: 60px;
-            padding: 20px 30px;
+            padding: 20px 15px;
             transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
         }
 
         .history-link:hover {
@@ -80,56 +78,15 @@
 
         .history-link h2 {
             color: #f0e6d2;
-            font-size: 1.8em;
+            font-size: 1.3em;
             margin: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
         }
 
         .history-link span {
             color: #ffd700;
             font-size: 0.8em;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 5px 15px;
-            border-radius: 30px;
-            border: 1px solid #d4af37;
-        }
-
-        .history-link .part {
-            font-size: 0.7em;
-            color: #b8860b;
-            margin-left: 10px;
-        }
-
-        .history-link:hover h2 {
-            color: #ffffff;
-        }
-
-        .history-link:hover span {
-            background: #d4af37;
-            color: #1a2a1a;
-        }
-
-        /* Иконки для каждой истории */
-        .link-1::before {
-            content: "🌍";
-            font-size: 1.5em;
-            margin-right: 10px;
-        }
-
-        .link-2::before {
-            content: "👥";
-            font-size: 1.5em;
-            margin-right: 10px;
-        }
-
-        .link-3::before {
-            content: "📜";
-            font-size: 1.5em;
-            margin-right: 10px;
+            display: block;
+            margin-top: 5px;
         }
 
         footer {
@@ -144,52 +101,50 @@
             .container {
                 padding: 30px 20px;
             }
-
             h1 {
                 font-size: 2.2em;
-            }
-
-            .history-link h2 {
-                font-size: 1.4em;
-                flex-direction: column;
-                gap: 8px;
-            }
-
-            .history-link span {
-                font-size: 0.9em;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>📖 Три истории мира</h1>
+        <h1>📖 История мира</h1>
 
         <div class="decor">✧ ✦ ✧</div>
 
         <div class="history-links">
-            <!-- Первая история -->
-            <a href="earth_create1" class="history-link link-1">
-                <h2>
-                    {{ k }} Истории мира 1 часть! {{ k }}
-                    <span>Сотворение земли</span>
-                </h2>
+            <a href="/earth_create1" class="history-link">
+                <h2>🌍 1. Сотворение земли</h2>
+                <span>Часть 1</span>
             </a>
-
-            <!-- Вторая история -->
-            <a href="earth_create2" class="history-link link-2">
-                <h2>
-                    {{ k }} Истории мира 2 часть! {{ k }}
-                    <span>Сотворение людей</span>
-                </h2>
+            <a href="/earth_create2" class="history-link">
+                <h2>👥 2. Сотворение людей</h2>
+                <span>Часть 2</span>
             </a>
-
-            <!-- Третья история -->
-            <a href="earth_create3" class="history-link link-3">
-                <h2>
-                    {{ k }} Истории мира 3 часть! {{ k }}
-                    <span>Миссия</span>
-                </h2>
+            <a href="/earth_create3" class="history-link">
+                <h2>🍎 3. Грехопадение</h2>
+                <span>Часть 3</span>
+            </a>
+            <a href="/earth_create4" class="history-link">
+                <h2>⚔️ 4. Каин и Авель</h2>
+                <span>Часть 4</span>
+            </a>
+            <a href="/earth_create5" class="history-link">
+                <h2>📜 5. От Адама до Ноя</h2>
+                <span>Часть 5</span>
+            </a>
+            <a href="/earth_create6" class="history-link">
+                <h2>🌊 6. Ной и потоп</h2>
+                <span>Часть 6</span>
+            </a>
+            <a href="/earth_create7" class="history-link">
+                <h2>🏗️ 7. Вавилонская башня</h2>
+                <span>Часть 7</span>
+            </a>
+            <a href="/earth_create8" class="history-link">
+                <h2>⭐ 8. Авраам и обетование</h2>
+                <span>Часть 8</span>
             </a>
         </div>
 
