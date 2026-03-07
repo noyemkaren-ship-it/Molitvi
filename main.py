@@ -6,6 +6,8 @@ from iisus import info, info1
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
+comment = []
+
 @app.get("/")
 async def root(request: Request):
     return templates.TemplateResponse(
@@ -127,10 +129,38 @@ async def earth_history8(request: Request):
     })
 
 @app.get("/isto")
-async def root(request: Request):
+async def isto(request: Request):
     return templates.TemplateResponse(
         "isto.html",
         {
             "request": request,
             "k": "☦"
         })
+
+
+@app.get("/comments")
+async def add_comment(com: str, bal1or5: int, request: Request):
+    if bal1or5 <= 0 or bal1or5 >= 6:
+        return {"error": "Rating must be between 1 and 5"}
+
+    comment.append({"text": com, "rating": bal1or5})
+    return templates.TemplateResponse("succes.html", {
+        "request": request
+    })
+
+
+@app.get("/comments_oll")
+async def add_comment_html(request: Request):
+    return templates.TemplateResponse("comments_oll.html", {
+        "request": request,
+
+    })
+
+
+@app.get("/comments_ol")
+async def add_comment_html(request: Request):
+    return templates.TemplateResponse("comments_ol.html", {
+        "request": request,
+        "comments": comment
+
+    })
